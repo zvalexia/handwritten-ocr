@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OCR Demo</title>
+    <script src="ocr.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            text-align: center;
+            margin-top: 40px;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        canvas {
+            border: 2px solid #4a90e2;
+            box-shadow: 0 4px 16px rgba(74,144,226,0.15);
+            background: #222;
+        }
+        button {
+            background: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            margin: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #357abd;
+        }
+        input[type="text"], input[type="number"] {
+            border: 1px solid #4a90e2;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 1em;
+        }
+        .footer {
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 18px;
+            color: #444;
+            text-align: center;
+            opacity: 0.6;
+        }
+        .info-box {
+            position: absolute;
+            right: 40px;       /* distance from right edge */
+            top: 150px;        /* distance from top */
+            width: 300px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 12px;
+            padding: 20px;
+            font-size: 18px;
+            backdrop-filter: blur(10px);
+            text-align: left;
+        }
+        .slogan {
+            position: absolute;
+            left: 40px;        /* left-side placement */
+            top: 120px;        /* adjust to taste */
+            width: 500px;
+            font-size: 22px;
+            color: #345;
+            opacity: 0.8;
+        }
+        .info-box h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+        h1 {
+            color: #357abd;
+        }
+    </style>
+</head>
+
+<body onload="ocrDemo.onLoadFunction()">
+    <h1>OCR Demo</h1>
+    <canvas id="canvas" width="200" height="200"></canvas>
+
+    <p>
+        <!-- Replace in ocr.html -->
+        Digit: <input id="digit" type="number" min="0" max="9" style="width:40px;">
+    </p>
+
+    <button onclick="ocrDemo.train()">Train</button>
+    <button onclick="ocrDemo.test()">Test</button>
+    <button onclick="ocrDemo.resetCanvas()">Reset</button>
+    <br>
+    <button onclick="ocrDemo.stopServer()">Stop goosing around</button>
+    <p id="result" style="font-size:1.2em;color:#357abd;"></p>
+    <div class="slogan">A tiny neural network learning in real time.<br><br>
+        The model starts from scratch and adapts based on the examples you draw.
+        Providing several samples per digit greatly improves recognition accuracy.
+    </div>
+    <div class="info-box">
+        <h2>How to use</h2>
+        <ul>
+            <li>Draw a digit (0–9) in the grid.</li>
+            <li>Enter the correct label.</li>
+            <li>Click TRAIN several times.</li>
+            <li>Click TEST to check recognition.</li>
+        </ul>
+    </div>
+
+
+    <footer class="footer">
+    Hand-drawn OCR
+    </footer>
+
+</body>
+</html>
